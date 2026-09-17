@@ -1,0 +1,5 @@
+Defect ID,Title,Related Test Case,Severity,Priority,Status,Environment,Steps to Reproduce,Expected Result,Actual Result,Reported By,Date Reported,Date Resolved,Resolution Notes
+DEF-01 (example),Add Customer form allowed submission with a blank Last Name,TC_02,Medium,Medium,Closed (illustrative example),Sandbox (Chrome),"1. Open Add Customer tab
+2. Leave Last Name blank
+3. Fill other fields and submit",Form should block submission until all mandatory fields are filled,Form accepted the submission with Last Name left blank,Tanzeela Shaik,(example date),(example date),Illustrative example row showing the defect-log format used during SIT/UAT; re-test step recorded once fixed
+DEF-02 (example),Withdrawal error message wording differed from the approved copy,TC_08,Low,Low,Closed (illustrative example),Sandbox (Chrome),1. Attempt to withdraw more than the available balance,Error message should match the approved UX copy,A shortened variant of the message was shown,Tanzeela Shaik,(example date),(example date),Illustrative example row; shows how a low-severity copy defect would be logged and closed
