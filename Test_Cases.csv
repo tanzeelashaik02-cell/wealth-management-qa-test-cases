@@ -1,0 +1,33 @@
+Test Case ID,Module,Title,Preconditions,Test Steps,Test Data,Expected Result,Priority,Type,Status
+TC_01,Client Onboarding,Add a new customer successfully,Bank Manager logged in,"1. Navigate to Add Customer tab
+2. Enter First Name, Last Name, Post Code
+3. Click Add Customer",First Name: Tanzeela; Last Name: Shaik; Post Code: DXB001,"Confirmation message displayed: ""Customer added successfully with customer id :<id>""",High,Positive,Pass
+TC_02,Client Onboarding,Add customer with missing mandatory field,Bank Manager logged in,"1. Navigate to Add Customer tab
+2. Leave Last Name blank
+3. Click Add Customer",First Name: Tanzeela; Last Name: (blank); Post Code: DXB001,Form does not submit / customer is not created,Medium,Negative,Pass
+TC_03,Account Opening,Open a Dollar account for an existing customer,Customer already onboarded (TC_01),"1. Navigate to Open Account tab
+2. Select customer from dropdown
+3. Select currency: Dollar
+4. Click Process",Customer: Tanzeela Shaik; Currency: Dollar,"Confirmation message displayed: ""Account created successfully with account Number :<number>""",High,Positive,Pass
+TC_04,Client Directory,Verify newly onboarded customer appears in client directory,Customer added (TC_01),"1. Navigate to Customers tab
+2. Search customer by last name",Search text: Shaik,Customer row displayed with correct First Name / Last Name / Post Code,Medium,Positive,Pass
+TC_05,Client Directory,Delete a customer record,Customer exists in directory,"1. Navigate to Customers tab
+2. Locate customer row
+3. Click Delete",Existing customer row,Customer row removed from the directory,Medium,Positive,Not Executed
+TC_06,Account Transactions,Deposit funds into an account,Customer logged in with an active account,"1. Navigate to Deposit tab
+2. Enter amount
+3. Click Deposit",Amount: 5000,"""Deposit Successful"" message displayed; account balance increases by the deposited amount",High,Positive,Pass
+TC_07,Account Transactions,Withdraw funds within available balance,Customer logged in; balance >= withdrawal amount,"1. Navigate to Withdrawl tab
+2. Enter amount within balance
+3. Click Withdraw",Amount: 500 (balance 5000),"""Transaction successful"" message displayed; account balance decreases by the withdrawn amount",High,Positive,Pass
+TC_08,Account Transactions,Reject withdrawal exceeding available balance,Customer logged in,"1. Navigate to Withdrawl tab
+2. Enter amount greater than balance
+3. Click Withdraw",Amount: 999999999 (balance 5000),"""Transaction Failed. You can not withdraw amount more than the balance."" displayed; balance unchanged",High,Negative,Pass
+TC_09,Account Transactions,Verify transaction history reflects a deposit as Credit,Deposit already made (TC_06),"1. Navigate to Transactions tab
+2. Locate the deposit entry",Deposited amount: 1000,"Row displayed with correct date-time, amount, and type = Credit",Medium,Positive,Pass
+TC_10,Account Transactions,Verify transaction history reflects a withdrawal as Debit,Withdrawal already made (TC_07),"1. Navigate to Transactions tab
+2. Locate the withdrawal entry",Withdrawn amount: 500,"Row displayed with correct date-time, amount, and type = Debit",Medium,Positive,Pass
+TC_11,Data Consistency,Verify account balance matches sum of transaction history,Multiple deposits/withdrawals made,"1. Sum all Credit/Debit entries in Transactions tab
+2. Compare to displayed account balance",Deposits: 5000 + 2000; Withdrawals: 500 + 1000,Displayed balance equals (total credits - total debits),High,Positive,Pass
+TC_12,Requirement Traceability,Verify currency selected at account opening is reflected on customer dashboard,Account opened with a specific currency (TC_03),"1. Log in as the customer
+2. View account summary",Currency selected: Dollar,Account summary displays the same currency selected at account opening,Medium,Positive,Pass
